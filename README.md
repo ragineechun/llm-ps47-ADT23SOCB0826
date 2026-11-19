@@ -20,10 +20,16 @@ Python · Streamlit · Groq API (`openai/gpt-oss-120b`, JSON mode) · pandas · 
 
 ## How it works
 ```
-journal.csv ──► pick a week ──► for each entry: prompt 1 (mood tagger) ──► JSON {mood, score, highlight}
-                                          │  saved back to the CSV
-                                          ▼
-                          prompt 2 (weekly coach) ──► JSON summary ──► Streamlit cards + line chart
+journal.csv
+   │
+   ▼  pick a week
+Prompt 1 – mood tagger (one call per entry)
+   │  → JSON {mood, score, highlight}, saved back to CSV
+   ▼
+Prompt 2 – weekly coach (one call per week)
+   │  → JSON {summary, trend, highlights, ...}
+   ▼
+Streamlit: sticky-note stats + mood chart + summary page
 ```
 
 ## How to run (local)
